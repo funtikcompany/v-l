@@ -1,3 +1,13 @@
+
+<template>
+    <span 
+        class="tag" :class="{ 'priority-tag': tag === 'Хіт' }"
+    >
+        {{ tag }}
+    </span>
+
+</template>
+
 <script setup>
 import { ref } from 'vue'
 const props = defineProps({
@@ -8,15 +18,6 @@ const props = defineProps({
     }
 })
 </script>
-
-<template>
-    <span 
-        class="tag" :class="{ 'priority-tag': tag === 'Хіт' }"
-    >
-        {{ tag }}
-    </span>
-
-</template>
 
 <style scoped>
     .tag {

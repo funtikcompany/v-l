@@ -1,3 +1,19 @@
+
+<template>
+    <div class="listing-card">
+        <div class="listing-header">
+            <h2>{{ listing.name }}</h2>
+            <div class="tags">
+                <Tag v-for="tag in listing.tags" :key="tag" :tag="tag" />
+            </div>
+        </div>
+        <div class="listing-details">
+            <div class="date">{{ formatDate(listing.date) }}</div>
+            <div class="price">{{ formatPrice(listing.price) }}</div>
+        </div>
+    </div>
+</template>
+
 <script setup>
 import { ref } from 'vue'
 import Tag from './Tag.vue'
@@ -35,21 +51,6 @@ const formatPrice = (price) => {
 }
 
 </script>
-
-<template>
-    <div class="listing-card">
-        <div class="listing-header">
-            <h2>{{ listing.name }}</h2>
-            <div class="tags">
-                <Tag v-for="tag in listing.tags" :key="tag" :tag="tag" />
-            </div>
-        </div>
-        <div class="listing-details">
-            <div class="date">{{ formatDate(listing.date) }}</div>
-            <div class="price">{{ formatPrice(listing.price) }}</div>
-        </div>
-    </div>
-</template>
 
 <style scoped>
     .listings {

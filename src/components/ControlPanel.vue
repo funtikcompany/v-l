@@ -1,28 +1,3 @@
-<script setup>
-const props = defineProps({
-    queryParameters: {
-        type: Object,
-        required: true,
-        default: () => ({})
-    }
-})
-
-const emit = defineEmits(['update:queryParameters'])
-// function to update URL
-const updateUrl = (key,event) => {
-  const updates = {
-    ...props.queryParameters,
-    [key]: event.target.value
-  }
-  
-  // clear priceFilter, if filterType is changed to dateFormat
-  if (event.target.name === 'filterType' && event.target.value === 'dateFormat') {
-    updates.priceFilter = ''
-  }
-  
-  emit('update:queryParameters', updates)
-}
-</script>
 
 <template>
     <div class="controls">
@@ -62,6 +37,31 @@ const updateUrl = (key,event) => {
     </div>
 
 </template>
+<script setup>
+  const props = defineProps({
+      queryParameters: {
+          type: Object,
+          required: true,
+          default: () => ({})
+      }
+  })
+
+  const emit = defineEmits(['update:queryParameters'])
+  // function to update URL
+  const updateUrl = (key,event) => {
+    const updates = {
+      ...props.queryParameters,
+      [key]: event.target.value
+    }
+    
+    // clear priceFilter, if filterType is changed to dateFormat
+    if (event.target.name === 'filterType' && event.target.value === 'dateFormat') {
+      updates.priceFilter = ''
+    }
+    
+    emit('update:queryParameters', updates)
+  }
+</script>
 
 <style scoped>
 .controls {
